@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<meta name="viewport"
+            content="width=device-width, initial-scale=1">
+
+<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<meta charset=utf-8 />
+<title></title>
+
+<style>
+  article, aside, figure, footer, header, hgroup,
+  menu, nav, section { display: block; }
+</style>
+</head>
+<body>
+
+<div class="container">
+<form name="inputnumber" action = "http://localhost:5000/k_insert" method = "POST" autocomplete="off">
+
+<p> <h4> İşçi məlumatlarının daxil edilməsi: <h4> </p><br>
+
+<label for="Id"><b>Işçinin İD kodu</b></label>
+<input type="text" type="text" placeholder="ID kodunu daxil edin" name="id" id="id" required onkeypress="return onlyNumberKey(event)" />
+<br><br>
+
+<label for="name"><b>İşçinin adı:</b></label>
+<input type="text" placeholder="Adınızı daxil edin" name="first_name" id="first_name" required>
+       <br><br>
+
+<label for="name"><b>İşçinin Soyadı:</b></label>
+<input type="text" placeholder="Soy adınızı daxil edin" name="sur_name" id="sur_name" required>
+  <br><br>
+<label for="name"><b>İşçinin ata adı:</b></label>
+<input type="text" placeholder="Ata adını daxil edin" name="father_name" id="father_name" required>
+<br><br>
+
+
+
+ <label for="file"><b>İşçinin şəkli:</b></label>
+
+<p><input type='file' onchange="readURL(this); "placeholder="Foto şəklini daxil edin" id="photo" name="photo" required></p>
+<img id="image1" src="#" alt="your image" />
+
+
+<br><br>
+<input type="submit" value="Submit" onclick="return detailssubmit()">
+
+</form>
+</div>
+</body>
+
+<script type="text/javascript">
+
+function onlyNumberKey(evt) {
+
+var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+return false;
+return true;
+}
+
+function readURL(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+
+reader.onload = function (e) {
+$('#image1')
+.attr('src', e.target.result)
+.width(160)
+.height(130);
+};
+
+reader.readAsDataURL(input.files[0]);
+}
+}
+
+</script>
+</body>
+</html>
